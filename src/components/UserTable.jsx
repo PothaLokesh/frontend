@@ -2,7 +2,7 @@ import {
     Table, TableBody, TableCell, TableHead, TableRow,
     IconButton
 } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+// import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { deleteUser } from "../services/user.service";
 import { toast } from "react-toastify";
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button, Container, Typography } from "@mui/material";
 import UserView from "../components/UserView";
@@ -10,18 +10,18 @@ export default function ViewUser() {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        loadUser();
-    }, []);
-
-    const loadUser = async () => {
+    const loadUser = useCallback(async () => {
         try {
             const res = await getUser(id);
             setUser(res.data);
         } catch (error) {
             toast.error("Failed to load user");
         }
-    };
+    }, [id]);
+
+    useEffect(() => {
+        loadUser();
+    }, [loadUser]);
 
     return (
         <Container>
